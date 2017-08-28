@@ -1,0 +1,6 @@
+<?
+$sSectionName = "Полиграфия";
+$arDirProperties = Array(
+
+);
+?>

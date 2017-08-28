@@ -1,0 +1,1 @@
+<? $arFilesInfo = array( 'FILES' => array("/bitrix/templates/furniture_red/components/bitrix/news/.default/bitrix/news.detail/.default/style.css" => "1503570665111",), 'CUR_SEL_CNT' => '2', 'CUR_IE_CNT' => '0'); ?>

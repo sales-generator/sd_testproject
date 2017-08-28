@@ -1,0 +1,53 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Компания", 
+		"company/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Полиграфия", 
+		"/poligrafiya/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Сувенирная продукция", 
+		"/suvenirnaya-produktsiya/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Каталог", 
+		"/katalog/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Прайс", 
+		"/price/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Блог", 
+		"/poleznye-materialy/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Контакты", 
+		"/kontakty/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>
