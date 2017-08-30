@@ -1,7 +1,33 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Сувенирная продукция");
-?><?$APPLICATION->IncludeComponent(
+?>
+    <div id="sidebar">
+<?$APPLICATION->IncludeComponent(
+	"bitrix:menu",
+	"none_sidebar",
+	array(
+		"ROOT_MENU_TYPE" => "left",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_TIME" => "36000000",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MAX_LEVEL" => "1",
+		"CHILD_MENU_TYPE" => "left",
+		"USE_EXT" => "Y",
+		"ALLOW_MULTI_SELECT" => "N",
+		"COMPONENT_TEMPLATE" => "none_sidebar",
+		"DELAY" => "N"
+	),
+	false,
+	array(
+		"ACTIVE_COMPONENT" => "Y"
+	)
+);?>
+    </div>
+
+<?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
 	"souvenirs", 
 	array(
@@ -144,4 +170,7 @@ $APPLICATION->SetTitle("Сувенирная продукция");
 		)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
