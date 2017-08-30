@@ -118,7 +118,7 @@ $APPLICATION->IncludeFile(
 );?>
 				<div class="content-block">
 					<div class="content-block-inner">
-						<h3><?=GetMessage('CFT_NEWS')?></h3>
+						<h3><?=GetMessage('CFT_NEWS')?>1</h3>
 <?
 $APPLICATION->IncludeFile(
 	SITE_DIR."include/news.php",

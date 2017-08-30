@@ -3,24 +3,43 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 global $APPLICATION;
 
-$aMenuLinksExt = $APPLICATION->IncludeComponent(
-	"bitrix:menu.sections", 
-	"", 
-	array(
-		"IS_SEF" => "Y",
-		"SEF_BASE_URL" => "/price/",
-	
-		"DETAIL_PAGE_URL" => "#SECTION_ID#/#ELEMENT_ID#",
-		"IBLOCK_TYPE" => "information",
-		"IBLOCK_ID" => "7",
-		"DEPTH_LEVEL" => "1",
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "36000000",
-		"ID" => $_REQUEST["ID"],
-		"SECTION_URL" => ""
-	),
-	false
-);
+if(CModule::IncludeModule("iblock"))
+{
 
-$aMenuLinks = array_merge($aMenuLinks, $aMenuLinksExt);
+    $IBLOCK_ID = 7;        // указываем из акого инфоблока берем элементы
+
+    $arOrder = Array("SORT"=>"ASC");    // сортируем по свойству SORT по возрастанию
+    $arSelect = Array("ID", "NAME", "IBLOCK_ID", "DETAIL_PAGE_URL");
+    $arFilter = Array("IBLOCK_ID"=>$IBLOCK_ID, "ACTIVE"=>"Y");
+    $res = CIBlockElement::GetList($arOrder, $arFilter, false, false, $arSelect);
+
+    while($ob = $res->GetNextElement())
+    {
+        $arFields = $ob->GetFields();            // берем поля
+//        echo $arFields['NAME']." - arFields['NAME']<br>";
+        /*        echo '<pre>';
+                print_r($arFields);        //
+                echo '</pre>';        */
+
+        // начинаем наполнять массив aMenuLinksExt нужными данными
+        $aMenuLinksExt[] = Array(
+            $arFields['NAME'],
+            $arFields['DETAIL_PAGE_URL'],
+            Array(),
+            Array(),
+            ""
+        );
+
+    }        //     while($ob = $res->GetNextElement())
+
+}    //     if(CModule::IncludeModule("iblock"))
+
+/*    echo "<br>Массив <b>aMenuLinksExt</b> - дополнительный";
+    echo '<pre>';
+    print_r($aMenuLinksExt);
+    echo '</pre>';            */
+
+$aMenuLinks = array_merge($aMenuLinksExt, $aMenuLinks);
+// $aMenuLinks = array_merge($aMenuLinks);
+
 ?>
